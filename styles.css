@@ -7,40 +7,86 @@ body {
   line-height: 1.65;
 }
 header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #0077b6;
+  padding: 1rem 2rem;
   color: white;
-  padding: 1.2rem;
-  text-align: center;
+  gap: 1rem;
 }
+.logo-link {
+  display: inline-block;
+}
+.logo {
+  height: 60px;
+  width: 60px;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.logo:hover {
+  transform: scale(1.1);
+}
+
 header h1 {
   font-size: 2rem;
   font-weight: 700;
-  margin: 0.5rem 0;
+  margin: 0;
 }
 nav {
-  margin-top: 0.8rem;
+  margin-left: auto;
+  display: flex;
+  gap: 1.5rem;
 }
-nav a {
+nav a.nav-link {
   color: white;
-  margin: 0 1.1rem;
   text-decoration: none;
   font-weight: 600;
+  position: relative;
+  transition: color 0.3s ease;
 }
-nav a:hover {
-  text-decoration: underline;
+nav a.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  bottom: -2px;
+  left: 0;
+  background: #90e0ef;
+  transition: width 0.3s ease;
+  border-radius: 2px;
 }
+nav a.nav-link:hover {
+  color: #90e0ef;
+}
+nav a.nav-link:hover::after {
+  width: 100%;
+}
+
 main {
   max-width: 900px;
   margin: 2.5rem auto;
   padding: 1rem;
 }
+
 section {
   margin-bottom: 2.5rem;
   padding: 1.5rem 1.1rem;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
+section.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 section h2 {
   font-size: 1.45rem;
   margin-bottom: 0.9rem;
@@ -50,10 +96,7 @@ section h2 {
 
 /* Meet the Team Section */
 .team-section {
-  margin-bottom: 3rem;
-  padding: 1rem;
   background: #ffffffcc;
-  border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
 }
 .team-section h2 {
@@ -75,6 +118,10 @@ section h2 {
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+.team-member img:hover {
+  transform: scale(1.05);
 }
 .team-member p {
   margin-top: 0.7rem;
@@ -95,6 +142,7 @@ section h2 {
   margin-top: 1rem;
   font-size: 0.98rem;
 }
+
 footer {
   background: #0077b6;
   color: white;
@@ -113,6 +161,8 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+
+/* Responsive */
 @media (max-width: 650px) {
   main {
     padding: 0;
@@ -120,8 +170,12 @@ footer a:hover {
   section {
     padding: 1rem 0.5rem;
   }
-  header h1 { font-size: 1.25rem; }
-  nav a { margin: 0 0.6rem;}
+  header h1 {
+    font-size: 1.25rem;
+  }
+  nav a.nav-link {
+    margin: 0 0.6rem;
+  }
   .team-grid {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
