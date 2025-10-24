@@ -5,17 +5,18 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.65;
-  overflow: hidden; /* Hide scrollbars caused by canvas */
+  overflow-y: scroll; /* allow scrolling normally */
 }
 
-/* Canvas fills entire background */
+/* Canvas fixed in place behind all content */
 #background-canvas {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Behind all content */
+  z-index: -1; /* behind all content */
+  display: block;
 }
 
 header {
