@@ -64,10 +64,20 @@ section p {
 }
 footer {
   text-align: center;
-  padding: 1rem;
+  padding: 1.5rem;
   background: #0077b6;
   color: white;
   font-size: 0.9rem;
+}
+.footer-container {
+  margin-bottom: 0.5rem;
+}
+footer a {
+  color: #90e0ef;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
 }
 /* Button style */
 .btn-primary {
