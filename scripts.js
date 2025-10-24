@@ -12,5 +12,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.addEventListener('scroll', revealSections);
-  revealSections(); // initial
+  revealSections(); // initial reveal on load
 });
