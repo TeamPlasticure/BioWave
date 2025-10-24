@@ -1,20 +1,23 @@
-document.getElementById('emailButton').addEventListener('click', function() {
-  window.location.href = 'mailto:contact@teamplasticure.org';
+document.addEventListener('DOMContentLoaded', () => {
+  const emailButton = document.getElementById('emailButton');
+  if (emailButton) {
+    emailButton.addEventListener('click', () => {
+      window.location.href = 'mailto:TeamPlastiCure@gmail.com';
+    });
+  }
+
+  function revealSections() {
+    const sections = document.querySelectorAll('.fade-in');
+    const triggerBottom = window.innerHeight * 0.95;
+
+    sections.forEach(section => {
+      const boxTop = section.getBoundingClientRect().top;
+      if (boxTop < triggerBottom) {
+        section.classList.add('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealSections);
+  revealSections(); // reveal on load
 });
-
-// Fade-in animation for all sections
-function revealSections() {
-  const sections = document.querySelectorAll('.fade-in');
-  const triggerBottom = window.innerHeight * 0.95;
-
-  sections.forEach(section => {
-    const boxTop = section.getBoundingClientRect().top;
-    if (boxTop < triggerBottom) {
-      section.classList.add('visible');
-    }
-  });
-}
-
-// On scroll & on page load
-window.addEventListener('scroll', revealSections);
-window.addEventListener('DOMContentLoaded', revealSections);
