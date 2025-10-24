@@ -26,17 +26,47 @@ header h1 {
   font-size: 1.8rem;
   letter-spacing: 2px;
 }
-nav a {
+
+/* Navigation Animations */
+nav a.nav-link {
+  position: relative;
   color: white;
   margin-left: 1.5rem;
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
-  transition: color 0.3s ease;
+  transition: color 0.3s cubic-bezier(.68,-0.55,.27,1.55);
 }
-nav a:hover {
+nav a.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  left: 0;
+  bottom: -2px;
+  background: #90e0ef;
+  transition: width 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+  border-radius: 2px;
+}
+nav a.nav-link:hover {
   color: #90e0ef;
 }
+nav a.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Section Animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+  transition: opacity 0.8s, transform 0.8s;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Main content */
 main {
   max-width: 1000px;
   margin: 2rem auto;
@@ -62,6 +92,26 @@ section p {
   color: #023047cc;
   margin-top: 1rem;
 }
+
+/* Button, Footer & Link Animations */
+.btn-primary {
+  background-color: #023047;
+  color: white;
+  padding: 0.7rem 1.3rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 1.5rem;
+  display: inline-block;
+  box-shadow: 0 2px 8px rgba(23, 100, 110, 0.08);
+}
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #005f7f;
+  transform: scale(1.05);
+}
 footer {
   text-align: center;
   padding: 1.5rem;
@@ -75,26 +125,11 @@ footer {
 footer a {
   color: #90e0ef;
   text-decoration: none;
+  transition: color 0.3s;
 }
 footer a:hover {
+  color: #48cae4;
   text-decoration: underline;
-}
-/* Button style */
-.btn-primary {
-  background-color: #023047;
-  color: white;
-  padding: 0.7rem 1.3rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-  margin-top: 1.5rem;
-  display: inline-block;
-}
-.btn-primary:hover {
-  background-color: #005f7f;
 }
 /* Responsive */
 @media (max-width: 600px) {
@@ -103,7 +138,7 @@ footer a:hover {
     flex-direction: column;
     margin-top: 0.5rem;
   }
-  nav a {
+  nav a.nav-link {
     margin: 0.4rem 0;
   }
   header {
